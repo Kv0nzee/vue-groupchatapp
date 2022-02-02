@@ -7,13 +7,22 @@
     "build": "vue-cli-service build"
   },
   "dependencies": {
+    "8": "0.0.1",
+    "@vee-validate/rules": "^4.5.7",
     "core-js": "^3.6.5",
+    "firebase": "^8.2.3",
+    "lodash": "^4.17.21",
+    "save": "^2.4.0",
+    "vee-validate": "^4.5.8",
+    "version": "^0.1.2",
     "vue": "^3.0.0",
-    "vue-router": "^4.0.0-0"
+    "vue-router": "^4.0.0-0",
+    "vuex": "^4.0.0-0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
     "@vue/cli-plugin-router": "~4.5.0",
+    "@vue/cli-plugin-vuex": "^4.5.15",
     "@vue/cli-service": "~4.5.0",
     "@vue/compiler-sfc": "^3.0.0"
   },

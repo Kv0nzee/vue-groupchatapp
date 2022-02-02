@@ -105,7 +105,11 @@ section{
     position: absolute;
     bottom:-30%;
     left:0;
+    transition: 0.5s;
     width:300px;
+}
+.footer:hover span{
+    color: #000000;
 }
 .contactform{
   position:absolute;
@@ -130,7 +134,7 @@ section{
   position: relative;
   display:flex;
   flex-direction:column;
-  justify-content:space-between;
+  justify-content:space-around;
   flex-wrap:wrap;
   padding-top:15px;
   margin:0 10px;
@@ -150,7 +154,7 @@ section{
   border-radius: 10px;
   outline:none;
 }
-.inputbox span{
+.inputbox .form_title{
   position:absolute;
   left:10px;
   padding:4px 0;
@@ -161,7 +165,16 @@ section{
   pointer-events: none;
   font-size:18px;
 }
-.inputbox p{
+.inputbox input:focus ~ .form_title,
+.inputbox input:valid ~ .form_title{
+  transform:translateY(-25px);
+  font-size:19px;
+  font-weight: 400;
+  letter-spacing:1px;
+  color:#1c54a8;
+}
+.errmesg{
+    display:block;
   padding:4px 0;
   font-style: 10px;
   font-weight: 300;
@@ -170,76 +183,26 @@ section{
   pointer-events: none;
   font-size:10px;
 }
-.inputbox input:focus ~ span,
-.inputbox input:valid ~ span{
-  transform:translateY(-25px);
-  font-size:19px;
-  font-weight: 400;
-  letter-spacing:1px;
-  color:#a81c1c;
-}
 .conbtn{
   width:50%;
   height:45px;
   margin: 20px auto;
   outline:none;
   border:none;
-  background:linear-gradient(90deg,#a81c1c,rgb(168, 28, 156),#1a5e99);
+  background:#3d3d3d;
   z-index: 1100;
   transition:0.7s;
   border-radius: 10px;
 }
 .conbtn p{
-  color:#fff;
+  color:rgb(212, 212, 212);
   opacity:0.6;
   transition:0.7s;
 }
 .conbtn:hover p{
-  font-size:20px;
-}
-.conbtn:hover{
-  border:3px solid #fff;
-}
-.feature1 {
-  position: relative;
-  width: 20px;
-  height: 20px;
-  border: 2px solid #50bcf2;
-  box-sizing: border-box;
-  left:20px;
-  top:-15px;
+  color:rgb(255, 255, 255);
 }
 
-.feature1 div {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  line-height: 25px;
-  transition: .5s ease;
-}
-
-.feature1 input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 140px;
-  height: 100px;
-  opacity: 0;
-  cursor: pointer;
-}
-.feature1 span{
-  position:absolute;
-  left:30px;
-  top:0;
-  font-style: 10px;
-  color:#a81c1c;
-  transition:0.5s;
-  pointer-events: none;
-  font-size:18px;
-  width:200px;
-}
 
 @media (max-width:767px)
 {
