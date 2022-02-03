@@ -58,7 +58,7 @@ import { useStore } from 'vuex'
 import {useRouter} from "vue-router";
 
 export default {
-    setup(){
+    setup(props,context){
        let router=useRouter();
       const store = useStore();
       const schema = ref({
@@ -116,7 +116,7 @@ export default {
                 return;
             }
             reg_alert_msg.value = 'Success! Your account has been created.';
-            router.push({name:"Chatroom"})
+            context.emit("enterChatroom");
             
         }
         return {schema,reg_show_alert,reg_in_submission,reg_alert_msg, signup,imageFile, upload,isDragover }

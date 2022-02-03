@@ -19,6 +19,7 @@ export default createStore({
 
       await userCred.user.updateProfile({
         displayName: payload.name,
+        photoURL:payload.url,
       });
 
     },

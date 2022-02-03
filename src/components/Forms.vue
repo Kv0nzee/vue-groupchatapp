@@ -15,7 +15,7 @@
                     <h2 v-if="signin">Sign In</h2>
                     <h2 v-else>Sign Up</h2>
                     <Signin v-if="signin"></Signin>
-                    <Signup v-else></Signup>
+                    <Signup @enterChatroom="enterChatroom" v-else></Signup>
                 </div>
                 
             </div>
@@ -25,14 +25,18 @@
 <script>
 import Signin from './Signin'
 import Signup from './Signup'
+import {useRouter} from "vue-router";
 import {ref} from '@vue/reactivity'
 export default {
   components: {
     Signin, Signup },
     setup(){
         const signin = ref(false);
-
-        return {signin};
+        let router=useRouter();
+         let enterChatroom=()=>{
+          router.push({name:"Chatroom"})
+        }
+        return {signin,enterChatroom};
     }
 }  
 </script>

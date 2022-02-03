@@ -17,10 +17,11 @@ const firebaseConfig = {
   let db=firebase.firestore();
   let auth =firebase.auth();
   let storage =firebase.storage();
+  let timestamp=firebase.firestore.FieldValue.serverTimestamp;
 
   db.enablePersistence().catch((error) => {
     console.log(`Firebase persistence error ${error.code}`)
   });
 
 // database setup
-  export {db,auth,storage};
+  export {db,auth,storage,timestamp};
