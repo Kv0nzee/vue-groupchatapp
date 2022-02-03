@@ -1,11 +1,12 @@
 <template>
-  <div  class="loader">
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-      <span></span>
-   </div>
+<div class="loader-wrapper">
+  <div class="loader">
+    <div class="ball"></div>
+    <div class="ball"></div>
+    <div class="ball"></div>
+  </div>
+  <div class="text">LOADING...</div>
+</div>
 </template>
 
 <script>
@@ -14,80 +15,109 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+.loader-wrapper {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+}
+
+.loader-wrapper .text {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  transform: translateX(-50%);
+  margin: 0 0 100px;
+  color: rgba(255, 255, 255, .7);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-family: sans-serif, helvetica;
+  letter-spacing: .5px;
+}
+
 .loader {
-  margin-left: 20px;
-  position: relative;
-  display: flex;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 24px;
+  border-left: 8px solid #fff;
+  border-right: 8px solid #fff;
+  overflow: hidden;
+}
+
+.loader .ball {
+  height: 8px;
+  width: 0;
   background: white;
-  box-shadow: 0px 40px 60px -20px rgba(0, 0, 0, 0.2);
+  position: relative;
+  margin: 0;
 }
 
-.loader span {
-  display: block;
-  width: 20px;
-  height: 20px;
-  background: #eee;
-  border-radius: 50%;
-  margin: 0 5px;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
+.loader .ball:nth-child(1) {
+  -webkit-animation: ball 2s ease-in-out infinite;
+  animation: ball 2s ease-in-out infinite;
 }
 
-.loader span:nth-child(2) {
-  background: #f07e6e;
+.loader .ball:nth-child(2) {
+  -webkit-animation: ball 2s ease-in-out .1s infinite;
+  animation: ball 2s ease-in-out .1s infinite;
 }
 
-.loader span:nth-child(3) {
-  background: #84cdfa;
+.loader .ball:nth-child(3) {
+  -webkit-animation: ball 2s ease-in-out .2s infinite;
+  animation: ball 2s ease-in-out .2s infinite;
 }
 
-.loader span:nth-child(4) {
-  background: #5ad1cd;
-}
-
-.loader span:not(:last-child) {
-  animation: animate 1.5s linear infinite;
-}
-
-@keyframes animate {
+@-webkit-keyframes ball {
   0% {
-    transform: translateX(0);
+    left: 0;
+    width: 0px;
   }
-
-  100% {
-    transform: translateX(30px);
+  25% {
+    left: 0;
+    width: 300px;
   }
-}
-
-.loader span:last-child {
-  animation: jump 1.5s ease-in-out infinite;
-}
-
-@keyframes jump {
-  0% {
-    transform: translate(0, 0);
+  50% {
+    left: 300px;
+    width: 0px;
   }
-  10% {
-    transform: translate(10px, -10px);
-  }
-  20% {
-    transform: translate(20px, 10px);
-  }
-  30% {
-    transform: translate(30px, -50px);
-  }
-  70% {
-    transform: translate(-150px, -50px);
-  }
-  80% {
-    transform: translate(-140px, 10px);
-  }
-  90% {
-    transform: translate(-130px, -10px);
+  75% {
+    left: 0;
+    width: 300px;
   }
   100% {
-    transform: translate(-120px, 0);
+    left: 0;
+    width: 0px;
   }
 }
 
+@keyframes ball {
+  0% {
+    left: 0;
+    width: 0px;
+  }
+  25% {
+    left: 0;
+    width: 300px;
+  }
+  50% {
+    left: 300px;
+    width: 0px;
+  }
+  75% {
+    left: 0;
+    width: 300px;
+  }
+  100% {
+    left: 0;
+    width: 0px;
+  }
+}
 </style>
