@@ -106,9 +106,8 @@ export default {
                     let res = await store.dispatch('register',{url:image_url,...values});
                     if(res){
                       console.log('true');
-                      setTimeout(() => {
                         context.emit("enterChatroom");
-                      }, 1500);
+                        location.reload();
                     }
                   }
                   );

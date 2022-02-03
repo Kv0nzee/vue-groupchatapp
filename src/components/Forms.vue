@@ -25,16 +25,14 @@
 <script>
 import Signin from './Signin'
 import Signup from './Signup'
-import {useRouter} from "vue-router";
 import {ref} from '@vue/reactivity'
 export default {
   components: {
     Signin, Signup },
     setup(){
         const signin = ref(false);
-        let router=useRouter();
          let enterChatroom=()=>{
-          router.push({name:"Chatroom"})
+           location.reload();
         }
         return {signin,enterChatroom};
     }

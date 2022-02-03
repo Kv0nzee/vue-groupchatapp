@@ -110,4 +110,9 @@ export default {
      margin-top: -10px;
      margin-right: 10px;
 }
+@media (max-width: 1400px) {
+  .userlist {
+    display:none;
+  }
+}
 </style>
