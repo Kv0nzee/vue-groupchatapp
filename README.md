@@ -5,9 +5,7 @@ Group chat app written with vuejs
 
 
 ## Screenshots
-
-![App Screenshot](![image](https://user-images.githubusercontent.com/62888962/152328528-34a1d26b-57f6-4c12-a3b3-7ad8a0c96ac0.png))
-
+![App Screenshot](https://user-images.githubusercontent.com/62888962/152328678-094a819a-18a5-4b5a-8f97-dc53ecc5132b.jpg)
 
 ## Demo
 
