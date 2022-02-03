@@ -17,18 +17,20 @@ body{
   color: #2c3e50;
 }
 
-#nav {
-  padding: 30px;
-} 
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
+#nprogress .bar {
+  height:5.5em;
+  background: #00a2ff !important;
 }
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+#nprogress .peg {
+  box-shadow: 0 0 10px #00a2ff, 0 0 5px #00a2ff;
 }
+
+#nprogress .spinner-icon {
+  border-top-color: #00a2ff;
+  border-left-color: #00a2ff;
+}
+
 ::-webkit-scrollbar {
   width: 0;
 }

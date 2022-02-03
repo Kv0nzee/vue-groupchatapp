@@ -14,11 +14,7 @@
                 <p>{{message.name}} : <span>{{message.message}}</span></p>
             </div>
            </div>
-           
-
         </div>
-        
-      
   </div>
 </template>
 

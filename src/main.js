@@ -4,7 +4,10 @@ import router from './router'
 import VeeValidatePlugin from './includes/validation';
 import store from './store'
 import {auth} from './includes/firebase'
+import ProgressBar from './includes/progress-bar';
+import 'nprogress/nprogress.css';
 
+ProgressBar(router);
 
 let app;
 

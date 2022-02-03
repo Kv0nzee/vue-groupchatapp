@@ -1,12 +1,14 @@
 <template>
-<div class="loader-wrapper">
-  <div class="loader">
-    <div class="ball"></div>
-    <div class="ball"></div>
-    <div class="ball"></div>
+  <div class="middle">
+    <div class="bar bar1"></div>
+    <div class="bar bar2"></div>
+    <div class="bar bar3"></div>
+    <div class="bar bar4"></div>
+    <div class="bar bar5"></div>
+    <div class="bar bar6"></div>
+    <div class="bar bar7"></div>
+    <div class="bar bar8"></div>
   </div>
-  <div class="text">LOADING...</div>
-</div>
 </template>
 
 <script>
@@ -16,108 +18,60 @@ export default {
 </script>
 
 <style scoped>
-.loader-wrapper {
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  z-index: 100;
-}
-
-.loader-wrapper .text {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  -webkit-transform: translateX(-50%);
-  -ms-transform: translateX(-50%);
-  transform: translateX(-50%);
-  margin: 0 0 100px;
-  color: rgba(255, 255, 255, .7);
-  text-transform: uppercase;
-  font-size: 11px;
-  font-family: sans-serif, helvetica;
-  letter-spacing: .5px;
-}
-
-.loader {
-  position: absolute;
+    .middle {
   top: 50%;
   left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-  -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  width: 300px;
-  height: 24px;
-  border-left: 8px solid #fff;
-  border-right: 8px solid #fff;
-  overflow: hidden;
+  position: absolute;
+}
+.bar {
+  width: 10px;
+  height: 70px;
+  background: #fff;
+  display: inline-block;
+  transform-origin: bottom center;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  /*   box-shadow:5px 10px 20px inset rgba(255,23,25.2); */
+  animation: loader 1.2s linear infinite;
+}
+.bar1 {
+  animation-delay: 0.1s;
+}
+.bar2 {
+  animation-delay: 0.2s;
+}
+.bar3 {
+  animation-delay: 0.3s;
+}
+.bar4 {
+  animation-delay: 0.4s;
+}
+.bar5 {
+  animation-delay: 0.5s;
+}
+.bar6 {
+  animation-delay: 0.6s;
+}
+.bar7 {
+  animation-delay: 0.7s;
+}
+.bar8 {
+  animation-delay: 0.8s;
 }
 
-.loader .ball {
-  height: 8px;
-  width: 0;
-  background: white;
-  position: relative;
-  margin: 0;
-}
-
-.loader .ball:nth-child(1) {
-  -webkit-animation: ball 2s ease-in-out infinite;
-  animation: ball 2s ease-in-out infinite;
-}
-
-.loader .ball:nth-child(2) {
-  -webkit-animation: ball 2s ease-in-out .1s infinite;
-  animation: ball 2s ease-in-out .1s infinite;
-}
-
-.loader .ball:nth-child(3) {
-  -webkit-animation: ball 2s ease-in-out .2s infinite;
-  animation: ball 2s ease-in-out .2s infinite;
-}
-
-@-webkit-keyframes ball {
+@keyframes loader {
   0% {
-    left: 0;
-    width: 0px;
-  }
-  25% {
-    left: 0;
-    width: 300px;
+    transform: scaleY(0.1);
+    background: transparent;
   }
   50% {
-    left: 300px;
-    width: 0px;
-  }
-  75% {
-    left: 0;
-    width: 300px;
+    transform: scaleY(1);
+    background: rgb(0, 0, 0);
   }
   100% {
-    left: 0;
-    width: 0px;
-  }
-}
-
-@keyframes ball {
-  0% {
-    left: 0;
-    width: 0px;
-  }
-  25% {
-    left: 0;
-    width: 300px;
-  }
-  50% {
-    left: 300px;
-    width: 0px;
-  }
-  75% {
-    left: 0;
-    width: 300px;
-  }
-  100% {
-    left: 0;
-    width: 0px;
+    transform: scaleY(0.1);
+    background: transparent;
   }
 }
 </style>

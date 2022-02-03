@@ -103,8 +103,13 @@ export default {
                     console.log(error)
                   },async () => {
                     let image_url = await task.snapshot.ref.getDownloadURL();
-                    console.log(image_url);
-                    await store.dispatch('register',{url:image_url,...values});
+                    let res = await store.dispatch('register',{url:image_url,...values});
+                    if(res){
+                      console.log('true');
+                      setTimeout(() => {
+                        context.emit("enterChatroom");
+                      }, 1500);
+                    }
                   }
                   );
                 }
@@ -116,7 +121,6 @@ export default {
                 return;
             }
             reg_alert_msg.value = 'Success! Your account has been created.';
-            context.emit("enterChatroom");
             
         }
         return {schema,reg_show_alert,reg_in_submission,reg_alert_msg, signup,imageFile, upload,isDragover }
