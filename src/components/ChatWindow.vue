@@ -1,27 +1,21 @@
 <template>
   <div class="chatwindow_container">
-       <div>
-          <div class="mesg">
-            <span>1hours</span>
-            <div class="mes">
-                <img src="https://ishadeed.com/assets/min-max/ch-unit.png" alt="">
-                <p>Kaung : <span>blah blah</span></p></div>
-           </div>
-           <div class="mesg">
-            <span>1hours</span>
-                <div class="mes">
-                    <img src="https://ishadeed.com/assets/min-max/ch-unit.png" alt="">
-                    <p>Kaung : <span>blah blah</span></p>
-                </div>
+       <div class="box-contain" ref="msgBox">
+          <div class="mesg"
+          v-for="message in formattedMessages" :key="message.id"
+          :class="{fright: message.name=== user.displayName }">
+          <span class="created_at" >{{message.created_at}}</span>
+            <div class="mes" v-if="message.name=== user.displayName">
+                <p><span>{{message.message}}</span> : {{message.name}}</p>
+                <img :src="message.profile" alt="">
+            </div>
+            <div  class="mes"  v-else>
+                <img :src="message.profile" alt="">
+                <p>{{message.name}} : <span>{{message.message}}</span></p>
+            </div>
            </div>
            
-            <div class="mesg fright">
-                <span>1hours</span>
-                <div class="mes">
-                    <p><span>blah blah</span> : Kaung</p>
-                    <img src="https://ishadeed.com/assets/min-max/ch-unit.png" alt="">
-                </div>
-            </div>
+
         </div>
         
       
@@ -29,8 +23,37 @@
 </template>
 
 <script>
+import { ref, computed, onUpdated } from 'vue';
+import {db} from "../includes/firebase";
+import {formatDistanceToNow} from "date-fns";
+import getUser from '../includes/getUser'
 export default {
+    setup(){
+      let {user} = getUser();
+      let messages=ref([]);
+      let msgBox = ref(null);
+      //auto scrolling
+      onUpdated(() => {
+        msgBox.value.scrollTop = msgBox.value.scrollHeight;
+      })
 
+      let formattedMessages=computed(()=>{
+        return messages.value.map((msg)=>{
+            let formatTime=formatDistanceToNow(msg.created_at.toDate())
+            return {...msg,created_at:formatTime}// name,msg,created_at:second nano
+        })// [{}]
+      })
+      db.collection("messages").orderBy("created_at").onSnapshot((snap)=>{
+        let results=[];//this onsnapshot run again and array empty again
+        snap.docs.forEach((doc)=>{
+          let document={...doc.data(),id:doc.id}
+          // console.log(doc.data());
+          results.push(document);
+        })
+          messages.value=results;
+      })
+      return {messages,formattedMessages, msgBox,user};
+    }
 }
 </script>
 
@@ -43,24 +66,30 @@ export default {
     margin: 0 auto;
     margin-top:10px;
 }
+.box-contain{
+    display: flex;
+    flex-direction: column;
+}
 .mesg{
-    max-width:500px;
+    float:left;
     padding:10px 0;
     margin:0 10px;
+    width:300px;
 }
 .mes{
-    display: flex;
     margin-top:10px;
 }
 .mes img{
-    width:40px;
-    height:40px;
+    width:50px;
+    height:50px;
     border-radius:50%;
     margin:0 10px;
+    margin-bottom: -15px;
 }
 .mes p{
     font-weight:800;
     font-size:1.3em;
+    display:inline;
 }
 .mes span{
     font-size:0.8em;
@@ -68,7 +97,9 @@ export default {
 }
 .fright{
     float:right;
-    text-align:right
+    text-align:right;
+    width:auto;
+    align-items:right;
 }
 
 </style>
