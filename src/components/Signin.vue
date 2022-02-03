@@ -31,9 +31,11 @@
 <script>
 import {ref} from '@vue/reactivity'
 import { useStore } from 'vuex'
+import {useRouter} from "vue-router";
 
 export default {
     setup(){
+      let router=useRouter();
       const store = useStore();
       const schema = ref({
             email: 'required|min:3|max:100|email',
@@ -45,7 +47,6 @@ export default {
       const signup = async (values)  => {
             login_show_alert.value = true;
             login_in_submission.value = true;
-            console.log(values);    
             try{
                 await store.dispatch('login', values);
             }catch(error){
@@ -54,6 +55,7 @@ export default {
                 return;
             }
             login_alert_msg.value = 'Success! You are now logged in.';
+            router.push({name:"Chatroom"})
         }
         return {schema,login_show_alert,login_in_submission,login_alert_msg, signup }
     }

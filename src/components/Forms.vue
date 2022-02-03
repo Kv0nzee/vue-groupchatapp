@@ -125,7 +125,7 @@ section{
 }
 .contactform h2{
   margin-left:35px;
-  margin-top:20px;
+  margin-top:10px;
   font-size: 2em;
   font-weight: 700;
   font-style: bold;
@@ -140,8 +140,9 @@ section{
   margin:0 10px;
 }
 .inputbox{
-  margin:20px 20px;
+  margin:10px 20px;
   width:100%;
+  height:50px;
   position: relative;
 }
 .inputbox input{
@@ -174,7 +175,7 @@ section{
   color:#1c54a8;
 }
 .errmesg{
-    display:block;
+  display:block;
   padding:4px 0;
   font-style: 10px;
   font-weight: 300;
