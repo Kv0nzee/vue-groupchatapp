@@ -3,7 +3,7 @@
         <textarea
          placeholder="tips: hit enter to send" 
          v-model="message"
-         @keypress.enter="handleSubmit"
+         @keypress.enter.prevent="handleSubmit"
          ></textarea>
     </form>
 </template>
